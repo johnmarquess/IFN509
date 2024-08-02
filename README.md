@@ -15,3 +15,7 @@
     ```pwsh
     conda install jupyter pandas matplotlib 
     ```
+5. Open the jupyter notebook using the following command in the repo folder
+    ```pwsh
+    jupyter notebook
+    ```
