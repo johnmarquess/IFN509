@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 
 
 def drop_columns_with_missing_values(df, columns_to_drop):
@@ -64,11 +65,14 @@ def recode_admission_source(df):
 
     choices = ['Referral', 'Transfer', 'Emergency', 'Unknown']
     df['admission_source'] = np.select(source_conditions, choices, default='Not available')
+    df.drop(['admission_type_id', 'discharge_disposition_id', 'admission_source_id'], axis=1, inplace=True)
     return df
 
 
 def recode_binary_values(df):
     df['gender'] = df['gender'].map({'Female': 1, 'Male': 0})
+    df['change'] = df['change'].astype(int)
+    df['diabetesMed'] = df['diabetesMed'].astype(int)
     return df
 
 
